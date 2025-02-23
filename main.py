@@ -32,6 +32,7 @@ from bd.database import engine, Base
 from routers.movie import routerMovie #Importo el objeto de mi movie.py de mi carpeta routers.
 from routers.users import login_user 
 import os
+import uvicorn
 
 app = FastAPI( #Es el nombre del objeto FastAPI.
         title = 'Aprendiendo FastApi',
@@ -51,7 +52,7 @@ def read_root():
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8000))
-    uvicorn.run("main:app", host = "0.0.0", port = port)
+    uvicorn.run("main:app", host = "0.0.0.0", port = port)
 
 
 
