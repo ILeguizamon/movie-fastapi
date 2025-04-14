@@ -1,11 +1,15 @@
 import jwt
+import os
+from dotenv import load_dotenv
 
-#Crear una variable de entorno para guardar la key.
-# key = misecret es mi firma.
+# Cargar variables del .env
+load_dotenv()
+SECRET_KEY = os.getenv("SECRET_KEY")
+
 def createToken(data: dict):
-    token: str = jwt.encode(payload = data, key = 'misecret', algorithm = 'HS256')
+    token: str = jwt.encode(payload=data, key=SECRET_KEY, algorithm='HS256')
     return token
 
 def validateToken(token: str) -> dict:
-    data: dict = jwt.decode(token, key='misecret', algorithms=['HS256'])
+    data: dict = jwt.decode(token, key=SECRET_KEY, algorithms=['HS256'])
     return data

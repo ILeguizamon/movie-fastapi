@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 movies.sqlite
 venv
+.env
